@@ -1,7 +1,7 @@
 "use server";
 
 import { marked } from "marked";
-import { ProjectsDetails } from "../ProjectDetails";
+import { ProjectsDetails } from "../app/ProjectDetails";
 
 export async function GetReadme(githubURL: string) {
 	const backup = `# Failed to fetch github readme. View the short bio instead! ${ProjectsDetails.find((proj) => proj.github == githubURL)?.description}`;
@@ -27,6 +27,7 @@ export async function GetReadme(githubURL: string) {
 
 		return readme;
 	} catch (er) {
+		console.error(er);
 		return backup;
 	}
 }

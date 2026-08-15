@@ -9,62 +9,62 @@ import { VscCode } from "react-icons/vsc";
 import { ProjectsDetails } from "../ProjectDetails";
 
 export default function SliderToggle() {
-  const [active, setActive] = useState("skills");
+	const [active, setActive] = useState("skills");
 
-  const outputSlider =
-    active === "skills" ? <SkillsContent /> : <ProjectsContent />;
+	const outputSlider =
+		active === "skills" ? <SkillsContent /> : <ProjectsContent />;
 
-  return (
-    <>
-      {openProject ? (
-        <ProjectModal
-          project={openProject}
-          onClose={() => setOpenProject(null)}
-        />
-      ) : null}
+	return (
+		<>
+			{openProject ? (
+				<ProjectModal
+					project={openProject}
+					onClose={() => setOpenProject(null)}
+				/>
+			) : null}
 
-      <section
-        id="SliderSection"
-        className="mt-10 w-full max-w-3xl rounded-2xl bg-background/60"
-      >
-        <div className="w-full max-w-3xl space-y-6 h-10 border border-border/80 rounded-2xl bg-white/10 dark:bg-black/10 backdrop-blur-lg ">
-          <div className="h-10 rounded-md p-1 bg-accent grid grid-cols-2 gap-1">
-            <button
-              onClick={() => setActive("skills")}
-              className={`h-full rounded-md text-sm font-semibold transition-all
+			<section
+				id="SliderSection"
+				className="mt-10 w-full max-w-3xl rounded-2xl bg-background/60"
+			>
+				<div className="w-full max-w-3xl space-y-6 h-10 border border-border/80 rounded-2xl bg-white/10 dark:bg-black/10 backdrop-blur-lg ">
+					<div className="h-10 rounded-md p-1 bg-accent grid grid-cols-2 gap-1">
+						<button
+							onClick={() => setActive("skills")}
+							className={`h-full rounded-md text-sm font-semibold transition-all
             ${
-              active === "skills"
-                ? "bg-neutral-700 text-white shadow"
-                : "text-foreground hover:bg-neutral-400/10"
-            }`}
-            >
-              Skills
-            </button>
+							active === "skills"
+								? "bg-neutral-700 text-white shadow"
+								: "text-foreground hover:bg-neutral-400/10"
+						}`}
+						>
+							Skills
+						</button>
 
-            <button
-              onClick={() => setActive("projects")}
-              className={`h-full rounded-md text-sm font-semibold transition-all
+						<button
+							onClick={() => setActive("projects")}
+							className={`h-full rounded-md text-sm font-semibold transition-all
             ${
-              active === "projects"
-                ? "bg-neutral-700 text-white shadow"
-                : "text-foreground hover:bg-neutral-400/10"
-            }`}
-            >
-              Projects
-            </button>
-          </div>
-        </div>
-        <div className={`transition-all duration-300 mt-5`}>{outputSlider}</div>
-      </section>
-    </>
-  );
+							active === "projects"
+								? "bg-neutral-700 text-white shadow"
+								: "text-foreground hover:bg-neutral-400/10"
+						}`}
+						>
+							Projects
+						</button>
+					</div>
+				</div>
+				<div className={`transition-all duration-300 mt-5`}>{outputSlider}</div>
+			</section>
+		</>
+	);
 }
 
 function SkillTag({ icon, text, subtext, color }) {
-  return (
-    <div
-      style={{ "--hover-color": color }}
-      className="
+	return (
+		<div
+			style={{ "--hover-color": color }}
+			className="
         group
         flex items-center gap-4
         rounded-xl
@@ -79,9 +79,9 @@ function SkillTag({ icon, text, subtext, color }) {
         hover:scale-[1.01]
         hover:-translate-y-1
       "
-    >
-      <div
-        className="
+		>
+			<div
+				className="
           flex h-11 w-11 items-center justify-center
           rounded-lg
           bg-foreground/7
@@ -91,110 +91,115 @@ function SkillTag({ icon, text, subtext, color }) {
           group-hover:bg-foreground/6
           text-[color-mix(in_srgb,var(--hover-color)_60%,currentColor)]
         "
-      >
-        {icon}
-      </div>
+			>
+				{icon}
+			</div>
 
-      <div className="leading-tight">
-        <p className="text-sm font-semibold">{text}</p>
-        <p className="text-xs opacity-70">{subtext}</p>
-      </div>
-    </div>
-  );
+			<div className="leading-tight">
+				<p className="text-sm font-semibold">{text}</p>
+				<p className="text-xs opacity-70">{subtext}</p>
+			</div>
+		</div>
+	);
 }
 
 export function ProjectsContent() {
-  const [showTill, setShowTill] = useState(4);
-  const [openProject, setOpenProject] = useState(null);
+	const [showTill, setShowTill] = useState(4);
+	const [openProject, setOpenProject] = useState(null);
 
-  return (
-    <>
-      {openProject ? (
-        <ProjectModal
-          project={openProject}
-          onClose={() => setOpenProject(null)}
-        />
-      ) : null}
+	return (
+		<>
+			{openProject ? (
+				<ProjectModal
+					project={openProject}
+					onClose={() => setOpenProject(null)}
+				/>
+			) : null}
 
-      <div className="grid gap-6 justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-center grid-flow-row">
-        {ProjectsDetails.slice(0, showTill).map((project, i) => (
-          <div key={i} className="">
-            <ProjectCard
-            
-            title={project.title}
-            description={project.description}
-            image={project.image}
-            tech={project.tech}
-            onOpen={() => setOpenProject(project)}
-            live={project.live}
-          />
-          </div>
-        ))}
-
-        {ProjectsDetails.length > showTill && (
-          <button
-            onClick={() => setShowTill(showTill + 4)}
-            className="mt-7 px-4 py-2 bg-primary text-primary-foreground rounded-lg cursor-pointer hover:opacity-80"
-          >
-            Show More
-          </button>
-        )}
-      </div>
-    </>
-  );
+			<div className="grid gap-6 justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-center grid-flow-row">
+				{ProjectsDetails.slice(0, showTill).map((project, i) => (
+					<div key={i} className="">
+						<ProjectCard
+							title={project.title}
+							description={project.description}
+							image={project.image}
+							tech={project.tech}
+							onOpen={() => setOpenProject(project)}
+							live={project.live}
+						/>
+					</div>
+				))}
+			</div>
+			{ProjectsDetails.length > showTill && (
+				<button
+					onClick={() => setShowTill(showTill + 4)}
+					className="mt-7 px-4 py-2 bg-primary/90 transition-colors duration-200 text-primary-foreground rounded-lg cursor-pointer hover:bg-primary w-full"
+				>
+					Show more
+				</button>
+			)}
+		</>
+	);
 }
 
 export function SkillsContent() {
-  return (
-    <div className="rounded-xl bg-background/1 p-6 grid grid-cols-2 gap-4">
-      <SkillTag
-        text="React"
-        subtext="UI library"
-        icon={<FaReact />}
-        color="#61DAFB"
-      />
-      <SkillTag
-        text="Next.js"
-        subtext="React framework"
-        icon={<SiNextdotjs />}
-        color="#ffffff"
-      />
-      <SkillTag
-        text="TailwindCSS"
-        subtext="CSS framework"
-        icon={<SiTailwindcss />}
-        color="#38BDF8"
-      />
-      <SkillTag
-        text="UI / UX"
-        subtext="Design principles"
-        icon={<FaFigma />}
-        color="#A259FF"
-      />
-      <SkillTag
-        text="Git"
-        subtext="Version control"
-        icon={<FaGitAlt />}
-        color="#F1502F"
-      />
-      <SkillTag
-        text="VS Code"
-        subtext="Code editor"
-        icon={<VscCode />}
-        color="#007ACC"
-      />
-      <SkillTag
-        text="Figma"
-        subtext="Design tool"
-        icon={<FaFigma />}
-        color="#A259FF"
-      />
-      <SkillTag
-        text="Node.js"
-        subtext="Backend runtime"
-        icon={<FaNodeJs />}
-        color="#68A063"
-      />
-    </div>
-  );
+	return (
+		<div className="rounded-xl bg-background/1 p-6 grid grid-cols-2 gap-4">
+			<SkillTag
+				text="React"
+				subtext="UI library"
+				icon={<FaReact />}
+				color="#61DAFB"
+			/>
+
+			<SkillTag
+				text="Next.js"
+				subtext="React framework"
+				icon={<SiNextdotjs />}
+				color="#ffffff"
+			/>
+
+			<SkillTag
+				text="TailwindCSS"
+				subtext="CSS framework"
+				icon={<SiTailwindcss />}
+				color="#38BDF8"
+			/>
+
+			<SkillTag
+				text="UI / UX"
+				subtext="Design principles"
+				icon={<FaFigma />}
+				color="#A259FF"
+			/>
+
+			<SkillTag
+				text="Git"
+				subtext="Version control"
+				icon={<FaGitAlt />}
+				color="#F1502F"
+			/>
+
+			<SkillTag
+				text="VS Code"
+				subtext="Code editor"
+				icon={<VscCode />}
+				color="#007ACC"
+			/>
+
+			{/* <SkillTag
+				text="Figma"
+				subtext="Design tool"
+				icon={<FaFigma />}
+				color="#A259FF"
+			/> */}
+
+			<SkillTag
+				text="Node.js"
+				subtext="Backend runtime"
+				icon={<FaNodeJs />}
+				color="#68A063"
+			/>
+		</div>
+	);
 }

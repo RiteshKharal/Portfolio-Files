@@ -62,7 +62,7 @@ export const ProjectsDetails = [
 
 		description: "A webstie made to choose the best colors.",
 
-		image: "/",
+		image: "/ColorChooser.png",
 
 		tech: ["React", "Tailwind", "Next.js"],
 
@@ -75,7 +75,7 @@ export const ProjectsDetails = [
 
 		description: "A place to share memories.",
 
-		image: "/",
+		image: "/NotedLife.png",
 
 		tech: ["React", "Tailwind", "Next.js"],
 

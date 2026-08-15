@@ -6,7 +6,7 @@ import { Josefin_Sans } from "next/font/google";
 import { FaArrowLeft, FaGithub, FaArrowRight } from "react-icons/fa";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import * as font from "@/app/fonts";
-import { GetReadme } from "../backend/GetReadme";
+import { GetReadme } from "../../server/GetReadme";
 import { useState, useEffect } from "react";
 
 export const josefin = Josefin_Sans({
@@ -61,12 +61,7 @@ export function ProjectCard({
 				<div className="absolute inset-0 bg-background/20 pointer-events-none transition duration-300 group-hover:backdrop-blur-lg backdrop-blur-xs" />
 
 				<div
-					className={`absolute inset-0 flex flex-col items-center justify-end text-center p-5 transition-all duration-300
-          group-hover:-translate-y-1.25 group-hover:scale-105
-          font-bold
-          text-foreground  ${font.ubuntu.className} 
-          drop-shadow-[0px_0px_0.8px_rgba(255,25,255,0.5),0_0px_0.8px_rgba(0255,0255,025,0.5),0_0px_0.8px_rgba(025,0255,0255,0.5),0_0px_0.7px_rgba(0255,0255,0255,1)]
-          dark:drop-shadow-[0_0px_0.5px_rgba(0,0,0,1),0_0px_1px_rgba(0,0,0,1)] leading-relaxed `}
+					className={`absolute inset-0 flex flex-col items-center justify-end text-center p-5 transition-all duration-300 group-hover:-translate-y-1.25 group-hover:scale-105 font-bold text-foreground  ${font.ubuntu.className} drop-shadow-[0px_0px_0.8px_rgba(255,25,255,0.5),0_0px_0.8px_rgba(0255,0255,025,0.5),0_0px_0.8px_rgba(025,0255,0255,0.5),0_0px_0.7px_rgba(0255,0255,0255,1)] dark:drop-shadow-[0_0px_0.5px_rgba(0,0,0,1),0_0px_1px_rgba(0,0,0,1)] leading-relaxed `}
 				>
 					<h2 className="text-2xl font-semibold text-foreground mb-1 transition-all duration-300 group-hover:text-2xl tracking-wide">
 						{title}
@@ -84,19 +79,7 @@ export function ProjectCard({
 							</span>
 						))}
 					</div>
-					<span
-						className="
-              mt-2
-              text-foreground font-semibold
-
-              flex items-center gap-2
-
-              transform translate-y-4 opacity-0
-              group-hover:translate-y-0 group-hover:opacity-100
-
-              transition-all duration-300 ease-out
-            "
-					>
+					<span className=" mt-2 text-foreground font-semibold flex items-center gap-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out ">
 						View
 						<FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
 					</span>
